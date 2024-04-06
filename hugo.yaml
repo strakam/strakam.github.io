@@ -1,4 +1,70 @@
-baseURL: https://example.org/
+baseURL: https://strakam.github.com
 languageCode: en-us
-title: My New Hugo Site
+title: Yo boi
 theme: ["PaperMod"]
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+mainsections: ["posts", "papermod"]
+# googleAnalytics: UA-123-45
+
+minify:
+  disableXML: true
+  # minifyOutput: true
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Lorem
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
+        - name: WiKi
+          url: https://github.com/adityatelange/hugo-PaperMod/wiki/
+
+    # custom params for each language should be under [langcode].parms - hugo v0.120.0
+    params:
+      languageAltTitle: English
+      profileMode:
+        enabled: true
+        title: Bc. Matej Straka xd
+        imageUrl: "https://raw.githubusercontent.com/googlefonts/noto-emoji/master/svg/emoji_u1f9d1_1f3fb_200d_1f4bb.svg"
+        imageTitle: ProfileMode image
+        # imageWidth: 120
+        # imageHeight: 120
+        subtitle: "Student :thinking: | Sexy :sweat_drops:"
+        buttons:
+          - name: 404 button!
+            url: posts
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  socialIcons:
+    - name: github
+      title: Check out my profile
+      url: "https://github.com/strakam"
+    - name: Linkedin
+      title: linkedin
+      url: "https://linkedin.com/in/matej-straka-8901b9220"
