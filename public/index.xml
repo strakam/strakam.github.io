@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>dadasd on Yo boi</title>
+    <title>Yo boi</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content in dadasd on Yo boi</description>
+    <description>Recent content on Yo boi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate></lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cv/</guid>
+      <description>Currently Standing on the shoulders of giants
+Education 2019 - 2022 (Bachelors) Faculty of Mathematics and Physics, Charles University
+General Computer Science, Combinatorics 2022 - Present (Masters) Faculty of Mathematics and Physics, Charles University
+Deep Learning, Reinforcement Learning 2023-2024 Technical University of Munich
+Erasmus for an academic year Working Experience Aug 2022 - Aug 2023 DataSentics, an Eviden business
+Data Scientist Activities Teacher assistant: Deep Learning, Machine Learning at MFF CUNI</description>
+    </item>
+    <item>
+      <title>Isaac Newtons&#39;s CV</title>
+      <link>http://localhost:1313/cv/markdown-cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cv/markdown-cv/</guid>
+      <description>Isaac Newton Physicist, Mathematician, Cambridge professor.
+Currently Standing on the shoulders of giants
+Specialized in Laws of motion, gravitation, minting coins, disliking Robert Hooke
+Research interests Cooling, power series, optics, alchemy, planetary motions, apples.
+Education 1654-1660 The King&amp;rsquo;s School, Grantham.
+June 1661 - now Trinity College, Cambridge
+Sizar 1667 - death Trinity College, Cambridge
+Fellow Awards 2012 President, Royal Society, London, UK
+Associate, French Academy of Science, Paris, France
+Publications Journals 1669 Newton Sir I, De analysi per æquationes numero terminorum infinitas.</description>
+    </item>
   </channel>
 </rss>

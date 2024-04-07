@@ -30,14 +30,12 @@ languages:
         - name: Lorem
           url: archives
           weight: 5
-        - name: Search
-          url: search/
+        - name: CV
+          url: cv/
           weight: 10
         - name: Tags
           url: tags/
           weight: 10
-        - name: WiKi
-          url: https://github.com/adityatelange/hugo-PaperMod/wiki/
 
     # custom params for each language should be under [langcode].parms - hugo v0.120.0
     params:
