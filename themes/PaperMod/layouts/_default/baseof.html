@@ -7,6 +7,9 @@
 
 <head>
     {{- partial "head.html" . }}
+    {{ if .Params.custom_css }}
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}{{ .Params.custom_css }}">
+    {{ end }}
 </head>
 
 <body class="
