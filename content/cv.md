@@ -33,6 +33,7 @@ __Technical University of Munich__
 `Aug 2022 - Aug 2023`
 __DataSentics, an Eviden business__
 - *Data Scientist*
+- Focus on Computer Vision and *Apache Spark* pipelines
 
 ## Activities
 __Teacher assistant:__ [Deep Learning](https://ufal.mff.cuni.cz/courses/npfl138/2324-summer), [Machine Learning](https://ufal.mff.cuni.cz/courses/npfl129/2324-winter) at *MFF CUNI*

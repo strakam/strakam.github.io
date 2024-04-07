@@ -1,6 +1,6 @@
 baseURL: https://strakam.github.com
 languageCode: en-us
-title: Yo boi
+title: Magpie
 theme: ["PaperMod"]
 
 enableInlineShortcodes: true
@@ -27,9 +27,6 @@ languages:
       series: series
     menu:
       main:
-        - name: Lorem
-          url: archives
-          weight: 5
         - name: CV
           url: cv/
           weight: 10
@@ -42,12 +39,13 @@ languages:
       languageAltTitle: English
       profileMode:
         enabled: true
-        title: Bc. Matej Straka xd
-        imageUrl: "https://raw.githubusercontent.com/googlefonts/noto-emoji/master/svg/emoji_u1f9d1_1f3fb_200d_1f4bb.svg"
+        title: Matej Straka
+        imageUrl: "photo_2024-04-07_15-29-42.jpg"
         imageTitle: ProfileMode image
         # imageWidth: 120
         # imageHeight: 120
-        subtitle: "Student :thinking: | Sexy :sweat_drops:"
+        subtitle: "Hi there 👋, my name is Matej and I'm a Computer Science student focusing on Deep (Reinforcement) Learning and this is my personal website created
+        mainly for fun and learning."
         buttons:
           - name: 404 button!
             url: posts
