@@ -1,1 +1,3 @@
 User-agent: *
+Disallow:
+Sitemap: https://strakam.github.com/sitemap.xml
