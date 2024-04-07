@@ -17,46 +17,37 @@ minify:
   disableXML: true
   # minifyOutput: true
 
-languages:
-  en:
-    languageName: "English"
-    weight: 1
-    taxonomies:
-      category: categories
-      tag: tags
-      series: series
-    menu:
-      main:
-        - name: CV
-          url: cv/
-          weight: 10
-        - name: Tags
-          url: tags/
-          weight: 10
+weight: 1
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+menu:
+  main:
+    - name: CV
+      url: cv/
+      weight: 10
+    - name: About
+      url: about/
+      weight: 10
 
-    # custom params for each language should be under [langcode].parms - hugo v0.120.0
-    params:
-      languageAltTitle: English
-      profileMode:
-        enabled: true
-        title: Matej Straka
-        imageUrl: "matej_face.jpg"
-        imageTitle: ProfileMode image
-        # imageWidth: 120
-        # imageHeight: 120
-        subtitle: "Hi 👋, my name is Matej and I'm a Computer Science student focusing on Deep (Reinforcement) Learning and this is my personal website created
-        mainly for fun and learning."
-        buttons:
-          - name: 404 button!
-            url: posts
-
-outputs:
-  home:
-    - HTML
-    - RSS
-    - JSON
-
+# custom params for each language should be under [langcode].parms - hugo v0.120.0
 params:
+  defaultTheme: light
+  disableThemeToggle: true
+  languageAltTitle: English
+  profileMode:
+    enabled: true
+    title: Matej Straka
+    imageUrl: "matej_face.jpg"
+    imageTitle: ProfileMode image
+    # imageWidth: 120
+    # imageHeight: 120
+    subtitle: "Hi 👋, my name is Matej and I'm a Computer Science student focusing on Deep (Reinforcement) Learning and this is my personal website created
+    mainly for fun and learning."
+    buttons:
+      - name: 404 button!
+        url: posts
   socialIcons:
     - name: github
       title: Check out my profile
@@ -64,3 +55,9 @@ params:
     - name: Linkedin
       title: linkedin
       url: "https://linkedin.com/in/matej-straka-8901b9220"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

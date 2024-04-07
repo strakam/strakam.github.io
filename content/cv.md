@@ -1,6 +1,6 @@
 +++
 title = ''
-custom_css = 'cv.css'
+custom_css = 'css/cv.css'
 +++
 <div id="webaddress">
 <a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
