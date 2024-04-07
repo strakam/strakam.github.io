@@ -41,7 +41,7 @@ __Teacher assistant:__ [Deep Learning](https://ufal.mff.cuni.cz/courses/npfl138/
 __Successful participant:__  Seminar on algorithmic programming
 
 [`kasiopea.matfyz.cz`](https://kasiopea.matfyz.cz)
-__Successful paricipant:__  Competitive programming, national round
+__Successful participant:__  Competitive programming, national round
 
 [`ksi.fi.muni.cz`](https://ksi.fi.muni.cz)
 __Successful participant:__  Informatics seminar by MUNI
