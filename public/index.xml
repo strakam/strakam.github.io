@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yo boi</title>
     <link>http://localhost:1313/</link>
@@ -13,12 +13,7 @@
       <link>http://localhost:1313/cv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/cv/</guid>
-      <description>Currently Standing on the shoulders of giants
-Education 2019 - 2022 (Bachelors) Faculty of Mathematics and Physics, Charles University
-General Computer Science, Combinatorics 2022 - Present (Masters) Faculty of Mathematics and Physics, Charles University
-Deep Learning, Reinforcement Learning 2023-2024 Technical University of Munich
-Erasmus for an academic year Working Experience Aug 2022 - Aug 2023 DataSentics, an Eviden business
-Data Scientist Activities Teacher assistant: Deep Learning, Machine Learning at MFF CUNI</description>
+      <description>Currently Standing on the shoulders of giants&#xA;Education 2019 - 2022 (Bachelors) Faculty of Mathematics and Physics, Charles University&#xA;General Computer Science, Combinatorics 2022 - Present (Masters) Faculty of Mathematics and Physics, Charles University&#xA;Deep Learning, Reinforcement Learning 2023-2024 Technical University of Munich&#xA;Erasmus for an academic year Working Experience Aug 2022 - Aug 2023 DataSentics, an Eviden business&#xA;Data Scientist Activities Teacher assistant: Deep Learning, Machine Learning at MFF CUNI</description>
     </item>
   </channel>
 </rss>
