@@ -6,8 +6,15 @@
     <description>Recent content on Magpie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Apr 2024 21:39:17 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Sat, 06 Apr 2024 21:39:17 +0200</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>Not much to learn about me yet.</description>
+    </item>
     <item>
       <title></title>
       <link>http://localhost:1313/cv/</link>

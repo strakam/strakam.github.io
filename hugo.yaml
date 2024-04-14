@@ -55,6 +55,9 @@ params:
     - name: Linkedin
       title: linkedin
       url: "https://linkedin.com/in/matej-straka-8901b9220"
+    - name: email
+      title: Email
+      url: "mailto:strakammm@gmail.com"
 
 outputs:
   home:
