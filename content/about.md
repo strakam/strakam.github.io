@@ -14,17 +14,16 @@ some interesting content in the future 🤗.'''
 - Reinforcement Learning
 - Computer Vision
 - Lots of ad hoc stuff connected to topics above
-## Choices
-- __Operating System__ - Arch Linux
 
-- __Window Manager__ - DWM
- 
-- __Code Editor__ - VS Code, Neovim
- 
-- __Book__ - Selfish Gene
- 
-- __Movie__ - Inception
- 
-- __Series__ - Game of Thrones
+## Activities
+
+__Teacher assistant:__ [Deep Learning](https://ufal.mff.cuni.cz/courses/npfl138/2324-summer), [Machine Learning](https://ufal.mff.cuni.cz/courses/npfl129/2324-winter) at *MFF CUNI*
+
+__Successful participant:__
+-  Seminar on algorithmic programming [`ksp.sk`](https://ksp.sk)
+
+- Competitive programming, national round  [`kasiopea.matfyz.cz`](https://kasiopea.matfyz.cz)
+
+- Informatics seminar by MUNI [`ksi.fi.muni.cz`](https://ksi.fi.muni.cz)
 
 ## Skills

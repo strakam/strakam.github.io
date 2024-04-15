@@ -111,6 +111,7 @@ ul {
 	margin-top: -0.5em;
 }
 
+
 /*uncomment to get dashes in the list*/
 /*li:before {
 	content: "-";
@@ -131,6 +132,15 @@ li ul {
 	margin-top: 0.25em;
 }
 
+code {
+    display: inline-block;
+    text-align: right;
+}
+
+choices_ul.li {
+    margin-left: 30px;
+    padding-left: 3%;
+}
 
 /* ================ The Timeline ================ */
  .example-header {
