@@ -133,13 +133,6 @@ li ul {
 
 
 /* ================ The Timeline ================ */
-a {
-	 color: #ff6b6b;
-}
- a:hover {
-	 color: #ff9a9a;
-	 text-decoration: none;
-}
  .example-header {
 	 background: #3d4351;
 	 color: #fff;
