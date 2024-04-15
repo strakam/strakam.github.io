@@ -6,15 +6,7 @@
     <description>Recent content on Magpie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Apr 2024 21:39:17 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Sat, 06 Apr 2024 21:39:17 +0200</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>Not much to learn about me yet.</description>
-    </item>
     <item>
       <title></title>
       <link>http://localhost:1313/cv/</link>
@@ -26,6 +18,14 @@ General Computer Science, Combinatorics 2022 - Present (Masters) Faculty of Math
 Deep Learning, Reinforcement Learning 2023-2024 Technical University of Munich
 Erasmus for an academic year Working Experience Aug 2022 - Aug 2023 DataSentics, an Eviden business
 Data Scientist Focus on Computer Vision and Apache Spark pipelines Activities Teacher assistant: Deep Learning, Machine Learning at MFF CUNI</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>Hi 👋, my name is Matej and I’m a Computer Science student focusing on Deep (Reinforcement) Learning and this is my personal website created mainly for fun. I hope to add
+some interesting content in the future 🤗.</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,167 @@
+{{- define "main" }}
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+<article class="post-single">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title entry-hint-parent">
+      {{ .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+      {{- end }}
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+      {{- partial "post_meta.html" . -}}
+      {{- partial "translation_list.html" . -}}
+      {{- partial "edit_post.html" . -}}
+      {{- partial "post_canonical.html" . -}}
+    </div>
+    {{- end }}
+  </header>
+  {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+  {{- if (.Param "ShowToc") }}
+  {{- partial "toc.html" . }}
+  {{- end }}
+
+  {{- if .Content }}
+  <div class="post-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+  </div>
+  {{- end }}
+  <h1>Programming Languages</h1>
+  <p class="category">Python</p>
+  <progress value="100" max="100" style="--value: 100; --max: 100;"></progress><br>
+  <p class="category">C++</p>
+  <progress value="70" max="100" style="--value: 70; --max: 100;"></progress><br>
+  <p class="category">HTML/CSS</p>
+  <progress value="50" max="100" style="--value: 50; --max: 100;"></progress><br>
+  <p class="category">Haskell</p>
+  <progress value="50" max="100" style="--value: 50; --max: 100;"></progress><br>
+  <h1>Frameworks</h1>
+  <p class="category">TensorFlow</p>
+  <progress value="85" max="100" style="--value: 85; --max: 100;"></progress><br>
+  <p class="category">PyTorch</p>
+  <progress value="60" max="100" style="--value: 60; --max: 100;"></progress><br>
+  <p class="category">Sci-kit Learn</p>
+  <progress value="60" max="100" style="--value: 60; --max: 100;"></progress><br>
+  <p class="category">LaTeX</p>
+  <progress value="85" max="100" style="--value: 85; --max: 100;"></progress><br>
+  <h1>Natural Languages</h1>
+  <p class="category">English</p>
+  <progress value="100" max="100" style="--value: 100; --max: 100;"></progress><br>
+  <p class="category">German</p>
+  <progress value="10" max="100" style="--value: 10; --max: 100;"></progress><br>
+  <p class="category">Slovak/Czech</p>
+  <progress value="100" max="100" style="--value: 100; --max: 100;"></progress><br>
+
+  
+  <h1 style="margin:50px 0px 30px 0px; font-size: 32px;">Timeline</h1>
+  <div class="row example-centered">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+            <ul class="timeline timeline-centered">
+                <li class="timeline-item">
+                    <div class="timeline-info">
+                        <span>2007</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Elementary School, Brezovica</h3>
+                        <p>I joined elementary school, yay!</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-info">
+                        <span>2015</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Secondary Technical School of Electrical Engineering</h3>
+						<p>In 2015 I joined high school. I started learning programming in Java,
+							creating websites, manipulating networks and robots. During that time I met a lot of interesting people
+						who are my friends to this day.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-info">
+                        <span>2019</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Bachelors at MFF, Charles University, Prague</h3>
+                        <p>In 2019 I started pursuing my bachelor's degree in General Computer Science. I was particularly
+							interested in advanced algorithms, data structures and combinatorics. I became proficient in 
+							various mathematics and computer science disciplines.</p>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-info">
+                        <span>2022</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Data Scientist at Datasentics</h3>
+                        <p>In 2022 I joined a machine-learning consultancy company, where I worked as a Data Scientist. 
+							I worked on various projects, including Computer Vision pipelines and Apache Spark jobs.</p>                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-info">
+                        <span>2022</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Masters at MFF, Charles University, Prague</h3>
+                        <p>In 2022 I also enrolled in Masters' degree in Artificial Intelligence. My focus is mainly
+							in Deep Learning, Deep Reinforcement Learning and Computer Vision.</p>
+				</li>
+                <li class="timeline-item">
+                    <div class="timeline-info">
+                        <span>2023</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Erasmus at TUM, Munich</h3>
+                        <p>From 2023 until now I am an Erasmus student at TUM. I'm attending courses in Computer Vision,
+							Game Theory, Deep Learning and Robotics.</p>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- The Timeline -->
+
+
+
+
+  <footer class="post-footer">
+    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    <ul class="post-tags">
+      {{- range ($.GetTerms $tags) }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- if (.Param "ShowPostNavLinks") }}
+    {{- partial "post_nav_links.html" . }}
+    {{- end }}
+    {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+    {{- partial "share_icons.html" . -}}
+    {{- end }}
+  </footer>
+
+  {{- if (.Param "comments") }}
+  {{- partial "comments.html" . }}
+  {{- end }}
+</article>
+
+{{- end }}{{/* end main */}}
