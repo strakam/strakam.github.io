@@ -13,7 +13,7 @@
   inherits: true;
   initial-value: 0;
 }
-
+  
 :root {
   --progress-bar-color: #cfd8dc;
   --progress-value-color: #2196f3;
