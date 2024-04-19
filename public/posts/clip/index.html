@@ -10,7 +10,7 @@
 <meta name="description" content="A short introduction to CLIP, the model behind current State-of-the-Art Computer Vision models.">
 <meta name="author" content="Matej Straka">
 <link rel="canonical" href="http://localhost:1313/posts/clip/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.90826aa26bab95212ec4f25481ebec186ed124a57c54ee5482dee4a455bbb17a.css" integrity="sha256-kIJqomurlSEuxPJUgevsGG7RJKV8VO5Ugt7kpFW7sXo=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.552142d795f36b7f327e0b1f8682f9793581e7f9aabeb49a11d975ce4f1828b2.css" integrity="sha256-VSFC15Xza38yfgsfhoL5eTWB5/mqvrSaEdl1zk8YKLI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -83,72 +83,67 @@
   <div class="post-content"><h3 id="disclaimer">Disclaimer<a hidden class="anchor" aria-hidden="true" href="#disclaimer">#</a></h3>
 <p>This is my first ever post, please excuse any inaccuracies. Any suggestions welcome at <a href="mailto:strakammm@gmail.com">strakammm@gmail.com</a>!</p>
 <h2 id="motivation">Motivation<a hidden class="anchor" aria-hidden="true" href="#motivation">#</a></h2>
-<p>Ever since Deep Learning started as a field, we have been observing an increased performance of models coming
-from using bigger datasets and more compute. One such compute and data demanding architecture, <a href="https://arxiv.org/abs/1706.03762">Transformer</a>,
+<p>Ever since Deep Learning started as a field, we have been observing an <strong>increased performance</strong> of models coming from using <strong>bigger datasets</strong> and <strong>more compute</strong>. One such compute and data demanding architecture, <a href="https://arxiv.org/abs/1706.03762">Transformer</a>,
 is used in many State-of-the-Art methods. The architecture properties and recent <a href="https://arxiv.org/abs/2001.08361">scaling laws</a> indicate that
 leveraging large amounts of data should lead to increased performance.</p>
-<p>However, the problem with datasets such as <a href="https://arxiv.org/abs/1409.0575">ImageNet</a> is that they grow slowly and have a weak annotation
-(usually just one word). On the other hand, websites such as Wikipedia or Instagram, contain bilions of images that
-contain some richer annotation in form of captions. <a href="https://arxiv.org/abs/2103.00020">CLIP</a> leverages these large &lsquo;annotated&rsquo; datasets to train large
-vision and language transformers in a fashion from which interesting properties emerge.</p>
+<p>However, the problem with datasets such as <a href="https://arxiv.org/abs/1409.0575">ImageNet</a> is that <strong>they grow slowly</strong> and <strong>have a weak annotation</strong>
+(usually just one word). On the other hand, websites such as Wikipedia or Instagram, <strong>contain bilions of images</strong> that
+contain <strong>richer annotation</strong> in form of <strong>captions</strong>. <a href="https://arxiv.org/abs/2103.00020">CLIP</a> leverages these large
+annotated datasets to train large vision and language transformers in a fashion from which interesting properties emerge.</p>
 <h3 id="shared-latent-space">Shared Latent Space<a hidden class="anchor" aria-hidden="true" href="#shared-latent-space">#</a></h3>
-<p>The first interesting property is that CLIP doesn&rsquo;t just learn arbitrary representations of text and images,
-but it embeds them into the same latent space. This basically means that when we get vector representation from CLIP
+<p>The first interesting property is that CLIP doesn&rsquo;t just learn <strong>arbitrary representations</strong> of text and images,
+but it <strong>embeds them into the same latent space</strong>. This basically means that when we get vector representation from CLIP
 for text and for image, we can compute the similarity between using cosine similarity. This enables us to use CLIP
-for text-image retrieval or text conditioning in image generation or image segmentation.</p>
+for <strong>text-image retrieval</strong> or <strong>text conditioning</strong> in <strong>image generation</strong> or <strong>image segmentation</strong>.</p>
 <h3 id="zero-shot-transfer">Zero-Shot Transfer<a hidden class="anchor" aria-hidden="true" href="#zero-shot-transfer">#</a></h3>
-<p>The second crucial property of CLIP is that it unlocks zero-shot transfer. In practice, instead of encoding image classes
-as one-hot vectors, we can encode them simply as &lsquo;strings&rsquo;. Then, since CLIP text encoder can encode any text, it can
-therefore encode any label we want. This allows us to use CLIP on our custom labels without any transfer learning.
+<p>The second crucial property of CLIP is that it <strong>unlocks zero-shot transfer</strong>. In practice, instead of encoding image classes
+as one-hot vectors, we can encode them simply as <em>strings</em>. Then, since CLIP <strong>text encoder can encode any text</strong>, it can
+therefore <strong>encode any label</strong> we want. This allows us to use CLIP on our custom labels <strong>without any transfer learning</strong>.
 See code down below.</p>
 <h2 id="method">Method<a hidden class="anchor" aria-hidden="true" href="#method">#</a></h2>
 <p><a name="diagram_anchor"></a></p>
 <h3 id="pre-training">Pre-Training<a hidden class="anchor" aria-hidden="true" href="#pre-training">#</a></h3>
-<p>The training procedure for the CLIP method is very sim-
-ilar to traditional supervised training.
-The dataset consists of 400 milion image-text pairs
-scraped from the internet. The architecture leverages one
-encoder for text and one for images. After obtaining a batch
+<p>The training procedure for the CLIP method is very similar to traditional supervised training.
+The dataset consists of 400 milion image-text pairs scraped from the internet.</p>
+<p>The architecture leverages one encoder for text and one for images. After obtaining a batch
 of N image-text pairs, we obtain embeddings from respective encoders.
-These representations are projected by one
-more linear layer into the same latent space where they are
-$L_2$ normalized. From these normalized representations an
-$N × N$ similarity matrix is created by computing pair-wise
-dot-product between every image and text representation.
-Then the softmax operation is applied to every row and col-
-umn, creating probability distributions - for each image we
+These representations are projected by one more linear layer into the <strong>same latent space</strong> where they are
+$L_2$ normalized.</p>
+<p>From these normalized representations an
+$N × N$ <strong>similarity matrix</strong> is created by computing <strong>pair-wise dot-product</strong>
+between every image and text representation.
+Then the <code>softmax</code> operation is applied to <strong>every row and column</strong>,
+creating probability distributions - for each image we
 have distribution over all texts and symmetrically for each
 text we have distribution over all images. Logits of ground
 truth labels are conveniently on the diagonal of the similarity matrix,
-from which we compute cross-entropy loss and train both encoders jointly.</p>
+from which we compute <strong>cross-entropy loss</strong> and <strong>train both encoders jointly</strong>.</p>
 <p><img loading="lazy" src="images/main-diagrams.png" alt="CLIP diagram"  />
 </p>
 <h3 id="downstream-adaptation">Downstream adaptation<a hidden class="anchor" aria-hidden="true" href="#downstream-adaptation">#</a></h3>
 <p>On the right side of the image above we observe how such model
-can be applied to downstream tasks. We create custom la-
-bels as strings, encode them once and cache obtained rep-
-resentations. Then, when a new image that has to be clas-
-sified comes in, we obtain its representation and compare
-it to cached text embeddings. Since text encoder can en-
-code any string of characters to obtain its representation,
-the zero-shot property emerges.</p>
+can be applied to downstream tasks.
+We create <strong>custom labels as strings</strong>, encode them <strong>once</strong> and cache obtained representations.
+Then, when a new image that has to be classified comes in, we obtain its representation and compare
+it to cached text embeddings. Since <strong>text encoder can encode any string of characters</strong> to obtain
+its representation, <strong>the zero-shot property emerges</strong>.</p>
 <h2 id="main-results">Main Results<a hidden class="anchor" aria-hidden="true" href="#main-results">#</a></h2>
 <h3 id="zero-shot-transfer-1">Zero-Shot Transfer<a hidden class="anchor" aria-hidden="true" href="#zero-shot-transfer-1">#</a></h3>
 <p>Perhaps the most important result of the paper is about its
-zero-shot performance. Authors stress the importance of
+<strong>zero-shot performance</strong>. Authors stress the importance of
 zero-shot evaluation as a way to assess true generalization
 strength of Computer Vision models on unseen datasets and
-motivate it as measuring task-learning capabilities. This is
-important because true general models should not need to
-be adapted to every new task they are presented with.
-From the Fig. 2 we can see that CLIP is a very strong zero-shot
+motivate it as measuring <strong>task-learning capabilities</strong>. This is
+important because
+<em>true general models should not need to be adapted to every new task they are presented with</em>
+From the following figure we can see that CLIP is a <strong>very strong zero-shot</strong>
 model, outperforming ResNet-50 on majority of datasets:</p>
 <img src="images/zs.png" style="width: 400px; margin: auto">
 <h3 id="natural-distribution-shift">Natural Distribution Shift<a hidden class="anchor" aria-hidden="true" href="#natural-distribution-shift">#</a></h3>
 <p>The study of generalization suggests another concept called
-Natural Distribution Shift, which measures models’ ability
-to classify images from the same class, but sampled from
-a different distribution (dataset). Consider an example of a
+<em><strong>Natural Distribution Shift</strong></em>, which measures models’ ability
+to classify images from the <strong>same class</strong>, but sampled from
+a <strong>different distribution</strong> (dataset). Consider an example of a
 banana. In one dataset, we might be presented with a photo
 of a banana, but in another, there might be black and white
 sketches of it. Humans understand the concept of a sketch
@@ -157,13 +152,15 @@ But do Computer Vision models understand it too?
 <img loading="lazy" src="images/rd.png" alt="Natural Distribution Shift"  />
 </p>
 <p>Authors show
-that most Computer Vision models trained on ImageNet are weak
-in this regard. CLIP, on the other hand, is able to maintain
-its performance when presented with samples for various distributions,
-which hints that it is indeed a very general model.</p>
+that most Computer Vision models trained on ImageNet are <strong>weak</strong>
+in this regard. CLIP, on the other hand, is <strong>able to maintain
+its performance</strong> when presented with samples for various distributions,
+which hints that it is indeed a <strong>very general model</strong>.</p>
 <h2 id="roll-your-own-classifier">Roll Your Own Classifier!<a hidden class="anchor" aria-hidden="true" href="#roll-your-own-classifier">#</a></h2>
+<p>The nature of CLIP allows us to create our own classifier very quickly.
+Following code is a simple example of how to do it using PyTorch&#x1f525; and HuggingFace🤗:</p>
 <h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
-<p>In this short post we have motivated and desribed the CLIP method.
+<p>In this short post we have motivated and desribed the <em><strong>CLIP method</strong></em>.
 The CLIP method is a powerful tool for Computer Vision.
 The ideas for pre-training show us how we can leverage vast amounts
 of data that is freely available on the internet.
