@@ -16,13 +16,6 @@
       <description>A short introduction to CLIP, the model behind current State-of-the-Art Computer Vision models.</description>
     </item>
     <item>
-      <title>Riadna testazz</title>
-      <link>http://localhost:1313/posts/test/</link>
-      <pubDate>Thu, 18 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/test/</guid>
-      <description>Guide to emoji usage in Hugo</description>
-    </item>
-    <item>
       <title></title>
       <link>http://localhost:1313/cv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
