@@ -50,7 +50,7 @@ params:
     subtitle: "Hi 👋, my name is Matej and I'm a Computer Science student focusing on Deep (Reinforcement) Learning and this is my personal website created
     mainly for fun and learning."
     buttons:
-      - name: 404 button!
+      - name: Posts
         url: posts
   socialIcons:
     - name: github
