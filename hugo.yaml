@@ -48,7 +48,7 @@ params:
     # imageWidth: 120
     # imageHeight: 120
     subtitle: "Hi 👋, my name is Matej and I'm a Computer Science student focusing on Deep (Reinforcement) Learning and this is my personal website created
-    mainly for fun and learning."
+    mainly for fun and learning. I hope you like it."
     buttons:
       - name: Posts
         url: posts

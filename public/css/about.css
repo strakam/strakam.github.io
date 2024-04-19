@@ -84,8 +84,6 @@ progress[value]::after {
   transform: translate(-50%, -50%);
   background-color: var(--progress-value-color);
   border-radius: 50%;
-  content: attr(value);
-  content: var(--progress-value-string, var(--value));
   font-size: 12px;
   font-weight: 700;
   color: #fff;
