@@ -31,7 +31,7 @@ menu:
       url: about/
       weight: 10
     - name: Posts
-      url: archives/
+      url: posts/
       weight: 5
 
 # custom params for each language should be under [langcode].parms - hugo v0.120.0
