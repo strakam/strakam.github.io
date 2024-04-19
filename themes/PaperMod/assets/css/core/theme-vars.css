@@ -29,10 +29,6 @@
     --border: rgb(51, 51, 51);
 }
 
-.list {
-    background: var(--code-bg);
-}
-
 .dark.list {
     background: var(--theme);
 }
