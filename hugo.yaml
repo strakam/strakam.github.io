@@ -36,6 +36,7 @@ menu:
 
 # custom params for each language should be under [langcode].parms - hugo v0.120.0
 params:
+  math: true
   defaultTheme: light
   disableThemeToggle: true
   languageAltTitle: English
@@ -67,3 +68,20 @@ outputs:
     - HTML
     - RSS
     - JSON
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - $
+            - $
+        enable: true

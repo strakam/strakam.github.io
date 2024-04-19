@@ -10,7 +10,7 @@
 <meta name="description" content="A short introduction to CLIP, the model behind current State-of-the-Art Computer Vision models.">
 <meta name="author" content="Matej Straka">
 <link rel="canonical" href="http://localhost:1313/posts/clip/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.12907bd721a648a1d1bebe5281debfbed49fb1633f2af0511b280dc980ae310a.css" integrity="sha256-EpB71yGmSKHRvr5Sgd6/vtSfsWM/KvBRGygNyYCuMQo=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.90826aa26bab95212ec4f25481ebec186ed124a57c54ee5482dee4a455bbb17a.css" integrity="sha256-kIJqomurlSEuxPJUgevsGG7RJKV8VO5Ugt7kpFW7sXo=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -28,6 +28,17 @@
 
     </style>
 </noscript>
+    
+    
+      <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['$', '$']]                  
+    }
+  };
+</script>
     
 </head>
 
@@ -69,295 +80,51 @@
 
 </div>
   </header> 
-  <div class="post-content"><h2 id="motivation">Motivation<a hidden class="anchor" aria-hidden="true" href="#motivation">#</a></h2>
+  <div class="post-content"><h3 id="disclaimer">Disclaimer<a hidden class="anchor" aria-hidden="true" href="#disclaimer">#</a></h3>
+<p>This is my first ever post, please excuse any inaccuracies. Any suggestions welcome at <a href="mailto:strakammm@gmail.com">strakammm@gmail.com</a>!</p>
+<h2 id="motivation">Motivation<a hidden class="anchor" aria-hidden="true" href="#motivation">#</a></h2>
 <p>Ever since Deep Learning started as a field, we have been observing an increased performance of models coming
-from using bigger datasets and more compute. One such compute and data demanding architecture, Transformer [9],
-is used in many State-of-the-Art methods. The architecture properties and recent scaling laws [3] indicate that
+from using bigger datasets and more compute. One such compute and data demanding architecture, <a href="https://arxiv.org/abs/1706.03762">Transformer</a>,
+is used in many State-of-the-Art methods. The architecture properties and recent <a href="https://arxiv.org/abs/2001.08361">scaling laws</a> indicate that
 leveraging large amounts of data should lead to increased performance.</p>
-<p>However, the problem with datasets such as ImageNet is that they grow slowly and have a weak annotation
+<p>However, the problem with datasets such as <a href="https://arxiv.org/abs/1409.0575">ImageNet</a> is that they grow slowly and have a weak annotation
 (usually just one word). On the other hand, websites such as Wikipedia or Instagram, contain bilions of images that
-contain some richer annotation in form of captions. CLIP leverages these large &lsquo;annotated&rsquo; datasets to train large
+contain some richer annotation in form of captions. <a href="https://arxiv.org/abs/2103.00020">CLIP</a> leverages these large &lsquo;annotated&rsquo; datasets to train large
 vision and language transformers in a fashion from which interesting properties emerge.</p>
 <h3 id="shared-latent-space">Shared Latent Space<a hidden class="anchor" aria-hidden="true" href="#shared-latent-space">#</a></h3>
 <p>The first interesting property is that CLIP doesn&rsquo;t just learn arbitrary representations of text and images,
 but it embeds them into the same latent space. This basically means that when we get vector representation from CLIP
 for text and for image, we can compute the similarity between using cosine similarity. This enables us to use CLIP
-for text-image retrieval or text conditioning in image generation or image segmentation.
-<script type="text/javascript" src= '/js/pdf-js/build/pdf.js'></script>
-
-<style>
-  #embed-pdf-container {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 20vh;
-     
-  }
-  
-  .pdf-canvas {
-    border: 1px solid black;
-    direction: ltr;
-    width: 100%;
-    height: auto;
-    display: none;
-  }
-  
-  #the-canvas {
-    border: 1px solid black;
-    direction: ltr;
-    width: 100%;
-    height: auto;
-    display: none;
-  }
-  
-  
-  .pdf-loadingWrapper {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 350px;
-  }
-  
-  .pdf-loading {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 3px solid #d2d0d0;;
-    border-radius: 50%;
-    border-top-color: #383838;
-    animation: spin 1s ease-in-out infinite;
-    -webkit-animation: spin 1s ease-in-out infinite;
-  }
-  
-  
-  
-  
-  
-  #overlayText {
-    word-wrap: break-word;
-    display: grid;
-    justify-content: end;
-  }
-  
-  #overlayText a {
-    position: relative;
-    top: 10px;
-    right: 4px;
-    color: #000;
-    margin: auto;
-    background-color: #eeeeee;
-    padding: 0.3em 1em;
-    border: solid 2px;
-    border-radius: 12px;
-    border-color: #00000030;
-    text-decoration: none;
-  }
-  
-  #overlayText svg {
-    height: clamp(1em, 2vw, 1.4em);
-    width:  clamp(1em, 2vw, 1.4em);
-  }
-  
-  
-  
-  @keyframes spin {
-    to { -webkit-transform: rotate(360deg); }
-  }
-  @-webkit-keyframes spin {
-    to { -webkit-transform: rotate(360deg); }
-  }
-  </style><div class="embed-pdf-container" id="embed-pdf-container-cbec7208">
-    <div class="pdf-loadingWrapper" id="pdf-loadingWrapper-cbec7208">
-        <div class="pdf-loading" id="pdf-loading-cbec7208"></div>
-    </div>
-    <div id="overlayText">
-      <a href="images/main-diagrams.pdf" aria-label="Download" download>
-        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-            <path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z" />
-        </svg>
-      </a>
-    </div>
-    <canvas class="pdf-canvas" id="pdf-canvas-cbec7208"></canvas>
-</div>
-
-<div class="pdf-paginator" id="pdf-paginator-cbec7208">
-    <button id="pdf-prev-cbec7208">Previous</button>
-    <button id="pdf-next-cbec7208">Next</button> &nbsp; &nbsp;
-    <span>
-      <span class="pdf-pagenum" id="pdf-pagenum-cbec7208"></span> / <span class="pdf-pagecount" id="pdf-pagecount-cbec7208"></span>
-    </span>
-    <a class="pdf-source" id="pdf-source-cbec7208" href="images/main-diagrams.pdf">[pdf]</a>
-</div>
-
-<noscript>
-View the PDF file <a class="pdf-source" id="pdf-source-noscript-cbec7208" href="images/main-diagrams.pdf">here</a>.
-</noscript>
-
-<script type="text/javascript">
-    (function(){
-    var url = 'images\/main-diagrams.pdf';
-
-    var hidePaginator = "" === "true";
-    var hideLoader = "" === "true";
-    var selectedPageNum = parseInt("") || 1;
-
-    
-    var pdfjsLib = window['pdfjs-dist/build/pdf'];
-
-    
-    if (pdfjsLib.GlobalWorkerOptions.workerSrc == '')
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "http:\/\/localhost:1313\/" + 'js/pdf-js/build/pdf.worker.js';
-
-    
-    var pdfDoc = null,
-        pageNum = selectedPageNum,
-        pageRendering = false,
-        pageNumPending = null,
-        scale = 3,
-        canvas = document.getElementById('pdf-canvas-cbec7208'),
-        ctx = canvas.getContext('2d'),
-        paginator = document.getElementById("pdf-paginator-cbec7208"),
-        loadingWrapper = document.getElementById('pdf-loadingWrapper-cbec7208');
-
-
-    
-    showPaginator();
-    showLoader();
-
-    
-
-    function renderPage(num) {
-      pageRendering = true;
-      
-      pdfDoc.getPage(num).then(function(page) {
-        var viewport = page.getViewport({scale: scale});
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        
-        var renderContext = {
-          canvasContext: ctx,
-          viewport: viewport
-        };
-        var renderTask = page.render(renderContext);
-
-        
-        renderTask.promise.then(function() {
-          pageRendering = false;
-          showContent();
-
-          if (pageNumPending !== null) {
-            
-            renderPage(pageNumPending);
-            pageNumPending = null;
-          }
-        });
-      });
-
-      
-      document.getElementById('pdf-pagenum-cbec7208').textContent = num;
-    }
-
-    
-
-    function showContent() {
-      loadingWrapper.style.display = 'none';
-      canvas.style.display = 'block';
-    }
-
-    
-
-    function showLoader() {
-      if(hideLoader) return
-      loadingWrapper.style.display = 'flex';
-      canvas.style.display = 'none';
-    }
-
-    
-
-    function showPaginator() {
-      if(hidePaginator) return
-      paginator.style.display = 'block';
-    }
-
-    
-
-    function queueRenderPage(num) {
-      if (pageRendering) {
-        pageNumPending = num;
-      } else {
-        renderPage(num);
-      }
-    }
-
-    
-
-    function onPrevPage() {
-      if (pageNum <= 1) {
-        return;
-      }
-      pageNum--;
-      queueRenderPage(pageNum);
-    }
-    document.getElementById('pdf-prev-cbec7208').addEventListener('click', onPrevPage);
-
-    
-
-    function onNextPage() {
-      if (pageNum >= pdfDoc.numPages) {
-        return;
-      }
-      pageNum++;
-      queueRenderPage(pageNum);
-    }
-    document.getElementById('pdf-next-cbec7208').addEventListener('click', onNextPage);
-
-    
-
-    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
-      pdfDoc = pdfDoc_;
-      var numPages = pdfDoc.numPages;
-      document.getElementById('pdf-pagecount-cbec7208').textContent = numPages;
-
-      
-      if(pageNum > numPages) {
-        pageNum = numPages
-      }
-
-      
-      renderPage(pageNum);
-    });
-    })();
-</script>
-</p>
+for text-image retrieval or text conditioning in image generation or image segmentation.</p>
 <h3 id="zero-shot-transfer">Zero-Shot Transfer<a hidden class="anchor" aria-hidden="true" href="#zero-shot-transfer">#</a></h3>
 <p>The second crucial property of CLIP is that it unlocks zero-shot transfer. In practice, instead of encoding image classes
 as one-hot vectors, we can encode them simply as &lsquo;strings&rsquo;. Then, since CLIP text encoder can encode any text, it can
 therefore encode any label we want. This allows us to use CLIP on our custom labels without any transfer learning.
 See code down below.</p>
 <h2 id="method">Method<a hidden class="anchor" aria-hidden="true" href="#method">#</a></h2>
+<p><a name="diagram_anchor"></a></p>
 <h3 id="pre-training">Pre-Training<a hidden class="anchor" aria-hidden="true" href="#pre-training">#</a></h3>
 <p>The training procedure for the CLIP method is very sim-
-ilar to traditional supervised training and is illustrated in
-Fig. 1. The dataset consists of 400 milion image-text pairs
+ilar to traditional supervised training.
+The dataset consists of 400 milion image-text pairs
 scraped from the internet. The architecture leverages one
 encoder for text and one for images. After obtaining a batch
-of N image-text pairs, we obtain embeddings from respec-
-tive encoders. These representations are projected by one
+of N image-text pairs, we obtain embeddings from respective encoders.
+These representations are projected by one
 more linear layer into the same latent space where they are
-L2 normalized. From these normalized representations an
-N × N similarity matrix is created by computing pair-wise
+$L_2$ normalized. From these normalized representations an
+$N × N$ similarity matrix is created by computing pair-wise
 dot-product between every image and text representation.
 Then the softmax operation is applied to every row and col-
 umn, creating probability distributions - for each image we
 have distribution over all texts and symmetrically for each
 text we have distribution over all images. Logits of ground
-truth labels are conveniently on the diagonal of the similar-
-ity matrix, from which we compute cross-entropy loss and
-train both encoders jointly.</p>
+truth labels are conveniently on the diagonal of the similarity matrix,
+from which we compute cross-entropy loss and train both encoders jointly.</p>
+<p><img loading="lazy" src="images/main-diagrams.png" alt="CLIP diagram"  />
+</p>
 <h3 id="downstream-adaptation">Downstream adaptation<a hidden class="anchor" aria-hidden="true" href="#downstream-adaptation">#</a></h3>
-<p>On the right side of Fig. 1 we observe how such model
+<p>On the right side of the image above we observe how such model
 can be applied to downstream tasks. We create custom la-
 bels as strings, encode them once and cache obtained rep-
 resentations. Then, when a new image that has to be clas-
@@ -375,7 +142,8 @@ motivate it as measuring task-learning capabilities. This is
 important because true general models should not need to
 be adapted to every new task they are presented with.
 From the Fig. 2 we can see that CLIP is a very strong zero-shot
-model, outperforming ResNet-50 on majority of datasets.</p>
+model, outperforming ResNet-50 on majority of datasets:</p>
+<img src="images/zs.png" style="width: 400px; margin: auto">
 <h3 id="natural-distribution-shift">Natural Distribution Shift<a hidden class="anchor" aria-hidden="true" href="#natural-distribution-shift">#</a></h3>
 <p>The study of generalization suggests another concept called
 Natural Distribution Shift, which measures models’ ability
@@ -385,7 +153,10 @@ banana. In one dataset, we might be presented with a photo
 of a banana, but in another, there might be black and white
 sketches of it. Humans understand the concept of a sketch
 and therefore understand that it does not need to be yellow.
-But do Computer Vision models understand it too? Authors show
+But do Computer Vision models understand it too?
+<img loading="lazy" src="images/rd.png" alt="Natural Distribution Shift"  />
+</p>
+<p>Authors show
 that most Computer Vision models trained on ImageNet are weak
 in this regard. CLIP, on the other hand, is able to maintain
 its performance when presented with samples for various distributions,
@@ -399,6 +170,21 @@ of data that is freely available on the internet.
 The zero-shot performance gives us a much more representative measure
 of generality of Computer Vision models and Deep Learning practitioners
 can leverage zero-shot for quickly evaluating new ideas.</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li>
+<p><a href="https://arxiv.org/abs/1706.03762">Attention is all you need</a></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2103.00020">Learning Transferable Visual Models From Natural Language Supervision</a></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/pdf/2001.08361">Scaling Laws for Neural Language Models</a></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/1409.0575">ImageNet</a></p>
+</li>
+</ul>
 
 
   </div>
@@ -469,3 +255,5 @@ can leverage zero-shot for quickly evaluating new ideas.</p>
 </body>
 
 </html>
+
+  
