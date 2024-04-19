@@ -6,10 +6,17 @@
     <description>Recent content in Posts on Magpie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Apr 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Riadna testaz</title>
+      <title>CLIP: Contrastive Language-Image Pretraining</title>
+      <link>http://localhost:1313/posts/clip/</link>
+      <pubDate>Fri, 19 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/clip/</guid>
+      <description>A short introduction to CLIP, the model behind current State-of-the-Art Computer Vision models.</description>
+    </item>
+    <item>
+      <title>Riadna testazz</title>
       <link>http://localhost:1313/posts/test/</link>
       <pubDate>Thu, 18 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/test/</guid>
