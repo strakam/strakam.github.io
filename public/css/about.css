@@ -48,7 +48,7 @@ progress[value] {
     calc((var(--progress-empty-color-s) + (var(--progress-filled-color-s) - var(--progress-empty-color-s)) * var(--progress-value-decimal)) * 1%)
     calc((var(--progress-empty-color-l) + (var(--progress-filled-color-l) - var(--progress-empty-color-l)) * var(--progress-value-decimal)) * 1%)
   );
-  animation: calc(3s * var(--progress-max-decimal)) linear 0.5s 1 normal both progress;
+  animation: calc(0.5s * var(--progress-max-decimal)) linear 0.5s 1 normal both progress;
 }
 
 
