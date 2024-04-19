@@ -3,6 +3,7 @@ author: "Matej Straka"
 title: "CLIP: Contrastive Language-Image Pretraining"
 date: "2024-04-19"
 description: "A short introduction to CLIP, the model behind current State-of-the-Art Computer Vision models."
+summary: "A short introduction to CLIP, the approach behind current State-of-the-Art Computer Vision models."
 ShowToc: false
 ShowBreadCrumbs: false
 params:
