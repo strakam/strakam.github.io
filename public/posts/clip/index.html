@@ -96,6 +96,8 @@ annotated datasets to train large vision and language transformers in a fashion 
 but it <strong>embeds them into the same latent space</strong>. This basically means that when we get vector representation from CLIP
 for text and for image, we can compute the similarity between using cosine similarity. This enables us to use CLIP
 for <strong>text-image retrieval</strong> or <strong>text conditioning</strong> in <strong>image generation</strong> or <strong>image segmentation</strong>.</p>
+<p><img loading="lazy" src="images/latent.png" alt="Shared Latent Space"  />
+</p>
 <h3 id="zero-shot-transfer">Zero-Shot Transfer<a hidden class="anchor" aria-hidden="true" href="#zero-shot-transfer">#</a></h3>
 <p>The second crucial property of CLIP is that it <strong>unlocks zero-shot transfer</strong>. In practice, instead of encoding image classes
 as one-hot vectors, we can encode them simply as <em>strings</em>. Then, since CLIP <strong>text encoder can encode any text</strong>, it can

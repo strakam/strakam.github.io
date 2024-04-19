@@ -29,6 +29,8 @@ but it __embeds them into the same latent space__. This basically means that whe
 for text and for image, we can compute the similarity between using cosine similarity. This enables us to use CLIP
 for __text-image retrieval__ or __text conditioning__ in __image generation__ or __image segmentation__.
 
+![Shared Latent Space](images/latent.png)
+
 ### Zero-Shot Transfer
 The second crucial property of CLIP is that it __unlocks zero-shot transfer__. In practice, instead of encoding image classes
 as one-hot vectors, we can encode them simply as *strings*. Then, since CLIP **text encoder can encode any text**, it can
