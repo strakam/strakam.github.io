@@ -13,13 +13,14 @@ params:
 This is my first ever post, please excuse any inaccuracies. Any suggestions welcome at strakammm@gmail.com!
 
 ## Motivation
-Ever since Deep Learning started as a field, we have been observing an __increased performance__ of models coming from using __bigger datasets__ and __more compute__. One such compute and data demanding architecture, [Transformer](https://arxiv.org/abs/1706.03762),
+Ever since Deep Learning started as a field, we have been observing an __increased performance__ of models
+coming from using __bigger datasets__ and __more compute__. One such compute and data demanding architecture, [Transformer](https://arxiv.org/abs/1706.03762),
 is used in many State-of-the-Art methods. The architecture properties and recent [scaling laws](https://arxiv.org/abs/2001.08361) indicate that
 leveraging large amounts of data should lead to increased performance.
 
 However, the problem with datasets such as [ImageNet](https://arxiv.org/abs/1409.0575) is that __they grow slowly__ and __have a weak annotation__
 (usually just one word). On the other hand, websites such as Wikipedia or Instagram, __contain bilions of images__ that
-contain __richer annotation__ in form of **captions**. [CLIP](https://arxiv.org/abs/2103.00020) leverages these large
+contain __richer annotation__ in form of **captions**. [CLIP](https://arxiv.org/abs/2103.00020), a multi-modal model, leverages these large
 annotated datasets to train large vision and language transformers in a fashion from which interesting properties emerge.
 
 ### Shared Latent Space
@@ -105,6 +106,48 @@ which hints that it is indeed a **very general model**.
 ## Roll Your Own Classifier!
 The nature of CLIP allows us to create our own classifier very quickly.
 Following code is a simple example of how to do it using PyTorch:fire: and HuggingFace🤗:
+```python
+from PIL import Image
+
+# Import the CLIP model
+from transformers import CLIPProcessor, CLIPModel
+
+# Processor tokenizes the labels and prepares images for model
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+# Model actually performs the forward pass and gives predictions
+model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+
+# Load our image, which is a panda eating a bamboo stick
+image = Image.open('panda.jpg')
+
+# Define our own labels as we want
+my_own_labels = [
+    "a photo of a panda",
+    "a photo of a grizzly bear",
+    "a photo of a bamboo",
+]
+
+# Prepare inputs for the forward pass
+inputs = processor(
+    text=my_own_labels, images=image, return_tensors="pt", padding=True
+)
+
+outputs = model(**inputs) # Apply forward pass
+logits_per_image = outputs.logits_per_image  # Obtain the logits
+probs = logits_per_image.softmax(dim=1)  # Convert to probabilities
+
+print(probs)
+```
+which outputs:
+
+`tensor([[7.8885e-01, 1.9084e-04, 2.1096e-01]], grad_fn=<SoftmaxBackward0>)`
+
+This essentially says that there is a
+- ~78.9% that the image is a photo of a panda
+- ~0.0001% that the image is a photo of a grizzly bear
+- ~21% that the image is a photo of a bamboo
+
+And that is it! This is how you can create your own classifier for your next project!
 
 ## Conclusion
 In this short post we have motivated and desribed the ***CLIP method***.

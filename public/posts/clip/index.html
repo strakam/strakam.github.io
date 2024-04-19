@@ -83,12 +83,13 @@
   <div class="post-content"><h3 id="disclaimer">Disclaimer<a hidden class="anchor" aria-hidden="true" href="#disclaimer">#</a></h3>
 <p>This is my first ever post, please excuse any inaccuracies. Any suggestions welcome at <a href="mailto:strakammm@gmail.com">strakammm@gmail.com</a>!</p>
 <h2 id="motivation">Motivation<a hidden class="anchor" aria-hidden="true" href="#motivation">#</a></h2>
-<p>Ever since Deep Learning started as a field, we have been observing an <strong>increased performance</strong> of models coming from using <strong>bigger datasets</strong> and <strong>more compute</strong>. One such compute and data demanding architecture, <a href="https://arxiv.org/abs/1706.03762">Transformer</a>,
+<p>Ever since Deep Learning started as a field, we have been observing an <strong>increased performance</strong> of models
+coming from using <strong>bigger datasets</strong> and <strong>more compute</strong>. One such compute and data demanding architecture, <a href="https://arxiv.org/abs/1706.03762">Transformer</a>,
 is used in many State-of-the-Art methods. The architecture properties and recent <a href="https://arxiv.org/abs/2001.08361">scaling laws</a> indicate that
 leveraging large amounts of data should lead to increased performance.</p>
 <p>However, the problem with datasets such as <a href="https://arxiv.org/abs/1409.0575">ImageNet</a> is that <strong>they grow slowly</strong> and <strong>have a weak annotation</strong>
 (usually just one word). On the other hand, websites such as Wikipedia or Instagram, <strong>contain bilions of images</strong> that
-contain <strong>richer annotation</strong> in form of <strong>captions</strong>. <a href="https://arxiv.org/abs/2103.00020">CLIP</a> leverages these large
+contain <strong>richer annotation</strong> in form of <strong>captions</strong>. <a href="https://arxiv.org/abs/2103.00020">CLIP</a>, a multi-modal model, leverages these large
 annotated datasets to train large vision and language transformers in a fashion from which interesting properties emerge.</p>
 <h3 id="shared-latent-space">Shared Latent Space<a hidden class="anchor" aria-hidden="true" href="#shared-latent-space">#</a></h3>
 <p>The first interesting property is that CLIP doesn&rsquo;t just learn <strong>arbitrary representations</strong> of text and images,
@@ -159,6 +160,45 @@ which hints that it is indeed a <strong>very general model</strong>.</p>
 <h2 id="roll-your-own-classifier">Roll Your Own Classifier!<a hidden class="anchor" aria-hidden="true" href="#roll-your-own-classifier">#</a></h2>
 <p>The nature of CLIP allows us to create our own classifier very quickly.
 Following code is a simple example of how to do it using PyTorch&#x1f525; and HuggingFace🤗:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Import the CLIP model</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">CLIPProcessor</span><span class="p">,</span> <span class="n">CLIPModel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Processor tokenizes the labels and prepares images for model</span>
+</span></span><span class="line"><span class="cl"><span class="n">processor</span> <span class="o">=</span> <span class="n">CLIPProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&#34;openai/clip-vit-base-patch32&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Model actually performs the forward pass and gives predictions</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">CLIPModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&#34;openai/clip-vit-base-patch32&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load our image, which is a panda eating a bamboo stick</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;panda.jpg&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define our own labels as we want</span>
+</span></span><span class="line"><span class="cl"><span class="n">my_own_labels</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;a photo of a panda&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;a photo of a grizzly bear&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;a photo of a bamboo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Prepare inputs for the forward pass</span>
+</span></span><span class="line"><span class="cl"><span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="o">=</span><span class="n">my_own_labels</span><span class="p">,</span> <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&#34;pt&#34;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span> <span class="c1"># Apply forward pass</span>
+</span></span><span class="line"><span class="cl"><span class="n">logits_per_image</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">logits_per_image</span>  <span class="c1"># Obtain the logits</span>
+</span></span><span class="line"><span class="cl"><span class="n">probs</span> <span class="o">=</span> <span class="n">logits_per_image</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Convert to probabilities</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+</span></span></code></pre></div><p>which outputs:</p>
+<p><code>tensor([[7.8885e-01, 1.9084e-04, 2.1096e-01]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></p>
+<p>This essentially says that there is a</p>
+<ul>
+<li>~78.9% that the image is a photo of a panda</li>
+<li>~0.0001% that the image is a photo of a grizzly bear</li>
+<li>~21% that the image is a photo of a bamboo</li>
+</ul>
+<p>And that is it! This is how you can create your own classifier for your next project!</p>
 <h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>In this short post we have motivated and desribed the <em><strong>CLIP method</strong></em>.
 The CLIP method is a powerful tool for Computer Vision.
