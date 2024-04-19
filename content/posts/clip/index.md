@@ -139,16 +139,20 @@ logits_per_image = outputs.logits_per_image  # Obtain the logits
 probs = logits_per_image.softmax(dim=1)  # Convert to probabilities
 
 print(probs)
+print(f'This is {my_own_labels[probs.argmax()]}.')
 ```
 which outputs:
 
-`tensor([[7.8885e-01, 1.9084e-04, 2.1096e-01]], grad_fn=<SoftmaxBackward0>)`
+`>>> tensor([[7.8885e-01, 1.9084e-04, 2.1096e-01]], grad_fn=<SoftmaxBackward0>)`
+
+`>>> This is a photo of a panda.`
 
 This essentially says that there is a
 - ~78.9% that the image is a photo of a panda
 - ~0.0001% that the image is a photo of a grizzly bear
 - ~21% that the image is a photo of a bamboo
 
+And we can find the correct label using the `argmax` function.
 And that is it! This is how you can create your own classifier for your next project!
 
 ## Conclusion

@@ -192,15 +192,18 @@ Following code is a simple example of how to do it using PyTorch&#x1f525; and Hu
 </span></span><span class="line"><span class="cl"><span class="n">probs</span> <span class="o">=</span> <span class="n">logits_per_image</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Convert to probabilities</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This is </span><span class="si">{</span><span class="n">my_own_labels</span><span class="p">[</span><span class="n">probs</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </span></span></code></pre></div><p>which outputs:</p>
-<p><code>tensor([[7.8885e-01, 1.9084e-04, 2.1096e-01]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></p>
+<p><code>&gt;&gt;&gt; tensor([[7.8885e-01, 1.9084e-04, 2.1096e-01]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></p>
+<p><code>&gt;&gt;&gt; This is a photo of a panda.</code></p>
 <p>This essentially says that there is a</p>
 <ul>
 <li>~78.9% that the image is a photo of a panda</li>
 <li>~0.0001% that the image is a photo of a grizzly bear</li>
 <li>~21% that the image is a photo of a bamboo</li>
 </ul>
-<p>And that is it! This is how you can create your own classifier for your next project!</p>
+<p>And we can find the correct label using the <code>argmax</code> function.
+And that is it! This is how you can create your own classifier for your next project!</p>
 <h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>In this short post we have motivated and desribed the <em><strong>CLIP method</strong></em>.
 The CLIP method is a powerful tool for Computer Vision.
