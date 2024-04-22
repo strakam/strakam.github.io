@@ -25,11 +25,13 @@
   --progress-filled-color-l: 49.2;
 }
 
+progress {
+  vertical-align: middle;
+}
 
 progress[value] {
   display: inline-block;
   position: relative;
-  margin-bottom: 5px;
   width: 80%;
   height: 6px;
   border: 0;
@@ -100,6 +102,7 @@ progress[value]::after {
 p.category {
     display: inline-block;
     margin-right: 10px;
+    margin-bottom: 3px;
     width: 16%;
 }
 
@@ -135,8 +138,12 @@ choices_ul.li {
 	 padding: 0;
 	 width: 100%;
 }
+ul.timeline {
+	 padding-inline-start: 5px;
+}
  .timeline h1, .timeline h2, .timeline h3, .timeline h4, .timeline h5, .timeline h6 {
 	 line-height: inherit;
+	 margin: 0 0 0.2em 0;
 }
 /*----- TIMELINE ITEM -----*/
  .timeline-item {
