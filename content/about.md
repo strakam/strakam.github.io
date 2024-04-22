@@ -25,5 +25,3 @@ __Successful participant:__
 - Competitive programming, national round  [`kasiopea.matfyz.cz`](https://kasiopea.matfyz.cz)
 
 - Informatics seminar by MUNI [`ksi.fi.muni.cz`](https://ksi.fi.muni.cz)
-
-## Skills
